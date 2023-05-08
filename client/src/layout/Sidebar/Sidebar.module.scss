@@ -1,0 +1,8 @@
+@import '../../styles/main.scss';
+
+.sidebar {
+	grid-column: 1;
+	grid-row: 2;
+	background: color(fieldBg);
+}
+
