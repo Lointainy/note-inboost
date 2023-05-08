@@ -12,11 +12,21 @@
 	justify-content: space-between;
 	width: 200px;
 	grid-template-columns: 1fr fit-content;
+
+	&:focus-within {
+		/* Стилі для div.search, коли один з дочірніх елементів має фокус */
+		outline: 2px solid $color-main-purple;
+	}
 }
 
 .input {
 	all: unset;
 	width: 100%;
+
+	&:focus-visible {
+		/* Стилі для input, коли має фокус та є видимим для користувача (наприклад, через клавішу Tab) */
+		outline: none;
+	}
 }
 
 .close {
