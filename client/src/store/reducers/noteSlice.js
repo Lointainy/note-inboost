@@ -3,14 +3,16 @@ import { v4 as uuidv4 } from 'uuid'
 import moment from 'moment'
 
 const initialState = {
-	notes: []
+	notes: [],
+	activeNote: {}
 }
 
 const defaultNote = {
 	_id: '',
 	title: 'New note',
 	updatedDate: '',
-	filter: ['default']
+	filter: ['default'],
+	body: ''
 }
 
 export const noteSlice = createSlice({
