@@ -10,6 +10,12 @@ import { store } from './store/store'
 /* Styles */
 import './styles/main.scss'
 
+/* ICONS */
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faSearch, faBars, faPlus, faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faSearch, faBars, faPlus, faSun, faMoon)
+
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
 	<React.StrictMode>
