@@ -6,7 +6,7 @@ export const getValue = () => {
 } // get value from localstorage
 
 export function useTheme() {
-	const [theme, setTheme] = useState() // dark is true
+	const [theme, setTheme] = useState(getValue) // dark is true
 	const [userTheme, setUserTheme] = useState(localStorage.getItem('user-theme') || 'light-theme')
 	//theme from local or default 'light'
 
