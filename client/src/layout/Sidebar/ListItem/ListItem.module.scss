@@ -1,0 +1,40 @@
+@import '../../../styles/main.scss';
+
+.item {
+	display: grid;
+	grid-template-columns: repeat(2, max-content);
+	grid-template-rows: repeat(2, max-content);
+	justify-content: space-between;
+	row-gap: 0.25rem;
+	padding: 1rem;
+	background: color(bg);
+	border-radius: $border-radius;
+
+	&:hover {
+		cursor: pointer;
+		transition: $animate;
+	}
+}
+
+.title {
+	grid-row: 1;
+	grid-column: span 2;
+	color: color(title);
+}
+
+.filter {
+	display: grid;
+	align-items: center;
+	justify-content: center;
+	color: color(subTitle);
+	padding: 0.25rem;
+	background: color(fieldBg);
+	border-radius: calc($border-radius / 2);
+}
+
+.date {
+	display: grid;
+	align-items: center;
+	color: $color-main-purple;
+}
+

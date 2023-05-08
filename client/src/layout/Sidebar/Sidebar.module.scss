@@ -4,5 +4,13 @@
 	grid-column: 1;
 	grid-row: 2;
 	background: color(fieldBg);
+	padding: 1rem;
+}
+
+.list {
+	display: grid;
+	grid-auto-flow: row;
+	row-gap: 1rem;
+	width: 100%;
 }
 
