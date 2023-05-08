@@ -3,5 +3,8 @@
 .App {
 	height: 100vh;
 	background: color(bg);
+	display: grid;
+	grid-template-columns: 300px 1fr;
+	grid-template-rows: 80px 1fr;
 }
 
