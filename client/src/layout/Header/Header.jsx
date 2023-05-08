@@ -1,6 +1,7 @@
 /* Store */
 import { toggleSidebar } from '../../store/reducers/uiSlice'
 import { useDispatch } from 'react-redux'
+import { addNote } from '../../store/reducers/noteSlice'
 
 /* Styles */
 import style from './Header.module.scss'
@@ -20,7 +21,7 @@ export default function Header() {
 				<div className={style.toggle} onClick={() => dispatch(toggleSidebar())}>
 					<Icon icon="bars" />
 				</div>
-				<div className={style.add}>
+				<div className={style.add} onClick={() => dispatch(addNote())}>
 					<Icon icon="plus" />
 				</div>
 
