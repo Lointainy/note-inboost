@@ -1,0 +1,54 @@
+/* Container */
+
+// DON`T TOUCH
+
+@mixin container($type) {
+	@each $name, $value in $grid-bp {
+		@media (min-width: $value) {
+			@if ($container-mw > $value) {
+				@if ($value == 0px) {
+					#{$type}-left: $grid-space-side;
+					#{$type}-right: $grid-space-side;
+				} @else {
+					#{$type}-left: calc((100% - $value) / 2);
+					#{$type}-right: calc((100% - $value) / 2);
+				}
+			} @else {
+				#{$type}-left: calc((100% - $container-mw) / 2);
+				#{$type}-right: calc((100% - $container-mw) / 2);
+			}
+		}
+	}
+}
+
+/* Media */
+
+@mixin mediaWidth($width, $value) {
+	$value: map-get($media-value, $value);
+	@media (#{$value}-width: $width) {
+		@content;
+	}
+}
+
+// Media query by breakpoints
+
+@mixin forMedia($width, $value) {
+	$value: map-get($media-value, $value);
+	@media (#{$value}-width: $width) {
+		@content;
+	}
+} // helper mixin for @mixin media
+
+@mixin media($name, $value) {
+	$width: map-get($grid-bp, $name);
+	@include forMedia($width, $value) {
+		@content;
+	}
+}
+
+@mixin forMediaEach($width) {
+	@media (min-width: $width) {
+		@content;
+	}
+} // helper mixin for @each and @for (create classes for columns)
+
