@@ -17,19 +17,19 @@ export default function App() {
 	const { userTheme } = useTheme()
 
 	// Status theme
-	const { colorTheme: theme } = useSelector((store) => store.ui)
+	const { colorTheme: theme, sidebar } = useSelector((store) => store.ui)
 
 	useEffect(() => {
 		// Set theme name to store
 		userTheme && dispatch(setTheme(userTheme))
-	}, [dispatch])
+	}, [dispatch, userTheme])
 
 	return (
 		<div className={`App ${theme}`}>
 			<Modals />
 			<Header />
-			<Sidebar />
-			<Workspace />
+			{sidebar && <Sidebar />}
+			<Workspace fullsize={!sidebar} />
 		</div>
 	)
 }
