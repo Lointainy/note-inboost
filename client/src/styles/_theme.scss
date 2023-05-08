@@ -1,0 +1,32 @@
+$light: (
+	bg: $color-very-light-grey,
+	title: $color-black,
+	subTitle: $color-medium-grey,
+	fieldBg: $color-white,
+	lineBg: $color-lines-light
+);
+
+$dark: (
+	bg: $color-very-dark-grey,
+	title: $color-white,
+	subTitle: $color-medium-grey,
+	fieldBg: $color-dark-grey,
+	lineBg: $color-lines-dark
+);
+
+.dark-theme {
+	@each $name, $color in $dark {
+		--color-#{""+$name}: #{$color};
+	}
+}
+
+.light-theme {
+	@each $name, $color in $light {
+		--color-#{""+$name}: #{$color};
+	}
+}
+
+@function color($getColor) {
+	@return var(--color-#{$getColor});
+}
+
