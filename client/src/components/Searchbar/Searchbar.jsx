@@ -9,11 +9,16 @@ import useInput from '../../hooks/useInput'
 
 export default function SearchBar() {
 	const search = useInput('')
+
+	const resetSearch = () => {
+		search.setValue('')
+	}
+
 	return (
 		<div className={style.search}>
 			<input type="text" className={style.input} {...search} />
 			{search.value && (
-				<div className={style.close}>
+				<div className={style.close} onClick={resetSearch}>
 					<Icon icon="circle-xmark" />
 				</div>
 			)}
