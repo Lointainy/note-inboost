@@ -1,0 +1,9 @@
+.workspace {
+	grid-row: 2;
+	grid-column: 2;
+}
+
+.workspace.fullsize {
+	grid-column: span 2;
+}
+
