@@ -1,0 +1,30 @@
+@import '../../styles/main.scss';
+
+.search {
+	display: grid;
+	grid-auto-flow: column;
+	align-items: center;
+	background: color(bg);
+	border-radius: $border-radius;
+	color: color(title);
+	padding: 0 1rem;
+	height: 2.5rem;
+	justify-content: space-between;
+	width: 200px;
+	grid-template-columns: 1fr fit-content;
+}
+
+.input {
+	all: unset;
+	width: 100%;
+}
+
+.close {
+	color: color(subTitle);
+	&:hover {
+		color: $color-main-purple;
+		cursor: pointer;
+		transition: $animate;
+	}
+}
+
