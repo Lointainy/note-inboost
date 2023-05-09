@@ -1,14 +1,24 @@
-/* Styles */
-import './App.scss'
+import { useEffect } from 'react'
 
-import { Modals, Workspace } from './components'
-import { Header, Sidebar } from './layout'
+/* Routes */
+import { Route, Routes } from 'react-router-dom'
 
 /* Hooks */
 import useTheme from './hooks/useTheme'
+
+/* Store */
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
 import { setTheme } from './store/reducers/uiSlice'
+
+/* Styles */
+import './App.scss'
+
+/* Pages */
+import { NotFoundPage, LoginPage, SignUpPage, NotePage } from './pages'
+
+/* Components */
+import { Modals } from './components'
+import { Header, Sidebar } from './layout'
 
 export default function App() {
 	const dispatch = useDispatch()
@@ -29,7 +39,14 @@ export default function App() {
 			<Modals />
 			<Header />
 			{sidebar && <Sidebar />}
-			<Workspace fullsize={!sidebar} />
+			<div className={`page-content ${!sidebar ? 'fullsize' : ''}`}>
+				<Routes>
+					<Route path={'note/:noteId'} element={<NotePage />} />
+					<Route path={'*'} element={<NotFoundPage />} />
+				</Routes>
+			</div>
+
+			{/* <Workspace fullsize={!sidebar} /> */}
 		</div>
 	)
 }
