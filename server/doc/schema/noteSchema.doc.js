@@ -29,5 +29,5 @@ const notesByUserSchema = {
 	}
 }
 
-module.exports = { notesByUserSchema }
+module.exports = { notesByUserSchema, singleNoteSchema }
 

@@ -1,5 +1,5 @@
 const userSchema = require('./schema/userSchema.doc')
-const { notesByUserSchema } = require('./schema/noteSchema.doc')
+const { notesByUserSchema, singleNoteSchema } = require('./schema/noteSchema.doc')
 
 const userRouteDoc = require('./routes/userRoutes.doc')
 const noteRouteDoc = require('./routes/noteRoutes.doc')
@@ -38,7 +38,8 @@ const swaggerDoc = {
 	components: {
 		schemas: {
 			User: userSchema,
-			Note: notesByUserSchema
+			Note: singleNoteSchema,
+			Notes: notesByUserSchema
 		},
 		securitySchemes: {
 			bearerAuth: {
