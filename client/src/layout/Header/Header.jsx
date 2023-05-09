@@ -2,6 +2,7 @@
 import { toggleSidebar } from '../../store/reducers/uiSlice'
 import { useDispatch } from 'react-redux'
 import { addNote } from '../../store/reducers/noteSlice'
+import { logout } from '../../store/reducers/authSlice'
 
 /* Styles */
 import style from './Header.module.scss'
@@ -18,7 +19,7 @@ export default function Header() {
 	return (
 		<div className={style.header}>
 			<div className={style.options}>
-				<div className={style.toggle} onClick={() => dispatch(toggleSidebar())}>
+				<div className={style.hidebar} onClick={() => dispatch(toggleSidebar())}>
 					<Icon icon="bars" />
 				</div>
 				<div className={style.add} onClick={() => dispatch(addNote())}>
@@ -28,6 +29,10 @@ export default function Header() {
 				<ThemeSwitcher />
 			</div>
 			<SearchBar />
+			<button onClick={() => dispatch(logout())} className={style.logout}>
+				<Icon icon="right-from-bracket" />
+				<span>Logout</span>
+			</button>
 		</div>
 	)
 }
