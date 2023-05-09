@@ -40,17 +40,17 @@ export const App = () => {
 	if (userLogined && !pathname.includes('/login')) {
 		return (
 			<div className={`App ${theme}`}>
-				<Modals />
-				<Header />
-				{sidebar && <Sidebar />}
-				<div className={`page-content ${!sidebar ? 'fullsize' : ''}`}>
-					<Routes>
-						<Route path={'note/:noteId'} element={<NotePage />} />
-						<Route path={'*'} element={<NotFoundPage />} />
-					</Routes>
+				<div className="grid">
+					<Modals />
+					<Header />
+					{sidebar && <Sidebar />}
+					<div className={`page-content ${!sidebar ? 'fullsize' : ''}`}>
+						<Routes>
+							<Route path={'note/:noteId'} element={<NotePage />} />
+							<Route path={'*'} element={<NotFoundPage />} />
+						</Routes>
+					</div>
 				</div>
-
-				{/* <Workspace fullsize={!sidebar} /> */}
 			</div>
 		)
 	}
