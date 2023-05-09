@@ -16,7 +16,7 @@ export default function SearchBar() {
 
 	return (
 		<div className={style.search}>
-			<input type="text" className={style.input} {...search} />
+			<input type="text" className={style.input} value={search.value} onChange={search.onChange} />
 			{search.value && (
 				<div className={style.close} onClick={resetSearch}>
 					<Icon icon="circle-xmark" />
