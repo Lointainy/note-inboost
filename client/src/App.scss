@@ -8,3 +8,12 @@
 	grid-template-rows: 80px 1fr;
 }
 
+.page-content {
+	grid-row: 2;
+	grid-column: 2;
+}
+
+.page-content.fullsize {
+	grid-column: span 2;
+}
+
