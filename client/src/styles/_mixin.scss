@@ -52,7 +52,9 @@
 @mixin btn-primary-l {
 	@include btn;
 	@include heading-m;
-	height: 3rem;
+	height: 2.5rem;
+	min-width: 1.5rem;
+	padding: 0 0.5rem;
 	background: $color-main-purple;
 	color: $color-white;
 	background: color(btnPr);
@@ -60,6 +62,22 @@
 
 	&:hover {
 		background: color(btnPrHover);
+	}
+}
+
+@mixin btn-secondary-l {
+	@include btn;
+	@include heading-m;
+	height: 2.5rem;
+	min-width: 1.5rem;
+	padding: 0 0.5rem;
+	background: color(bg);
+	color: color(subTitle);
+	border-radius: calc($border-radius / 2);
+
+	&:hover {
+		color: $color-white;
+		background: color(subTitle);
 	}
 }
 
