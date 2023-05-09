@@ -35,6 +35,34 @@
 	letter-spacing: 0px;
 }
 
+/* Buttons */
+
+@mixin btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+
+	&:hover {
+		cursor: pointer;
+		transition: $animate;
+	}
+}
+
+@mixin btn-primary-l {
+	@include btn;
+	@include heading-m;
+	height: 3rem;
+	background: $color-main-purple;
+	color: $color-white;
+	background: color(btnPr);
+	border-radius: calc($border-radius / 2);
+
+	&:hover {
+		background: color(btnPrHover);
+	}
+}
+
 /* Container */
 
 // DON`T TOUCH

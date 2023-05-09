@@ -3,7 +3,9 @@ $light: (
 	title: $color-black,
 	subTitle: $color-medium-grey,
 	fieldBg: $color-white,
-	lineBg: $color-lines-light
+	lineBg: $color-lines-light,
+	btnPr: $color-main-purple,
+	btnPrHover: $color-main-purple-hover
 );
 
 $dark: (
@@ -11,7 +13,9 @@ $dark: (
 	title: $color-white,
 	subTitle: $color-medium-grey,
 	fieldBg: $color-dark-grey,
-	lineBg: $color-lines-dark
+	lineBg: $color-lines-dark,
+	btnPr: $color-main-purple,
+	btnPrHover: $color-main-purple-hover
 );
 
 .dark-theme {
