@@ -11,6 +11,11 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from './store/store'
 
+/* Fonts */
+import '@fontsource/montserrat'
+import '@fontsource/montserrat/500.css'
+import '@fontsource/montserrat/700.css'
+
 /* Styles */
 import './styles/main.scss'
 
