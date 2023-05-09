@@ -22,11 +22,14 @@ export const noteSlice = createSlice({
 		addNote: (state) => {
 			state.notes = [...state.notes, { ...defaultNote, _id: uuidv4(), updatedAt: moment().format() }]
 			console.log(JSON.stringify(state.notes))
+		},
+		setNotes: (state, action) => {
+			state.notes = action.payload
 		}
 	}
 })
 
-export const { addNote } = noteSlice.actions
+export const { addNote, setNotes } = noteSlice.actions
 
 export default noteSlice.reducer
 
