@@ -19,9 +19,21 @@ export const notesApi = createApi({
 		getNotes: builder.query({
 			query: () => '/notes',
 			providesTags: ['Notes']
+		}),
+		getNoteById: builder.query({
+			query: (id) => `/notes/${id}`,
+			providesTags: ['Note']
+		}),
+		updateNote: builder.mutation({
+			query: ({ id, note }) => ({
+				url: `/notes/${id}`,
+				method: 'PATCH',
+				body: note
+			}),
+			invalidatesTags: ['Notes']
 		})
 	})
 })
 
-export const { useGetNotesQuery } = notesApi
+export const { useGetNotesQuery, useGetNoteByIdQuery, useUpdateNoteMutation } = notesApi
 
