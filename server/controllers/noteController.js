@@ -23,6 +23,26 @@ const getNotes = async (req, res) => {
 	}
 }
 
+const getNoteById = async (req, res) => {
+	let user_id = req.user._id
+	let note_id = req.params.id
+
+	try {
+		let userData = await Note.findOne({ user_id })
+
+		let note = userData.notes.find((n) => n._id == note_id)
+
+		if (note) {
+			res.status(200).json(note)
+		} else {
+			res.status(400).json({ msg: `No such Note with ${note_id}` })
+		}
+	} catch (error) {
+		res.status(500).json({ msg: error.message })
+		console.log(error)
+	}
+}
+
 const createNote = async (req, res) => {
 	let user_id = req.user._id
 	let newNote = req.body
@@ -83,5 +103,5 @@ const deleteNote = async (req, res) => {
 	}
 }
 
-module.exports = { getNotes, createNote, updateNote, deleteNote }
+module.exports = { getNotes, getNoteById, createNote, updateNote, deleteNote }
 
