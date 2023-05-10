@@ -1,0 +1,35 @@
+@import '../../styles/main';
+
+.page {
+	height: calc(100% - 2rem);
+	width: calc(100% - 2rem);
+	padding: 1rem;
+	overflow-x: hidden;
+	display: grid;
+	grid-auto-columns: 1fr;
+	grid-auto-rows: 1rf;
+}
+
+.textarea {
+	outline: none;
+	border: none;
+	resize: none;
+	@include heading-m;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	background: color(bg);
+	color: color(title);
+	height: 100%;
+	width: 100%;
+}
+
+.textfield {
+	color: color(subTitle);
+	height: 100%;
+}
+
+.msg {
+	@include heading-m;
+	color: color(subTitle);
+}
+
