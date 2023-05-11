@@ -1,8 +1,8 @@
 @import '../../../styles/main.scss';
 
-.item {
+.note {
 	display: grid;
-	grid-template-columns: repeat(2, max-content);
+	grid-template-columns: 1.7fr 0.3fr;
 	grid-template-rows: repeat(2, max-content);
 	justify-content: space-between;
 	row-gap: 0.25rem;
@@ -25,19 +25,31 @@
 	color: color(title);
 }
 
+.show {
+	@include btn-primary-s;
+}
+
 .filters {
-	display: grid;
-	align-items: center;
-	justify-content: center;
-	color: color(subTitle);
-	padding: 0.25rem;
-	background: color(fieldBg);
-	border-radius: calc($border-radius / 2);
+	grid-column: span 2;
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem;
+	}
+
+	&__item {
+		@include btn-secondary-l;
+		background: color(fieldBg);
+		font-weight: 500;
+	}
 }
 
 .date {
+	grid-column: span 2;
 	display: grid;
 	align-items: center;
 	color: $color-main-purple;
+	@include body-m;
 }
 
