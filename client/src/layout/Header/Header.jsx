@@ -46,7 +46,7 @@ export default function Header() {
 				<div className={style.add} onClick={() => handleClickOption('AddNewNote')}>
 					<Icon icon="plus" />
 				</div>
-				{activeNote.length && (
+				{activeNote.title && (
 					<>
 						<div className={style.delete} onClick={() => handleClickOption('DeleteNote')}>
 							<Icon icon="trash" />
