@@ -1,6 +1,6 @@
 /* Store */
 import { toggleSidebar } from '../../store/reducers/uiSlice'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../store/reducers/authSlice'
 import { openModal } from '../../store/reducers/modalSlice'
 
@@ -15,6 +15,8 @@ import { ThemeSwitcher, SearchBar } from '../../components'
 
 export default function Header() {
 	const dispatch = useDispatch()
+
+	const { activeNote } = useSelector((store) => store.note)
 
 	const handleClickOption = (name) => {
 		switch (name) {
@@ -44,9 +46,13 @@ export default function Header() {
 				<div className={style.add} onClick={() => handleClickOption('AddNewNote')}>
 					<Icon icon="plus" />
 				</div>
-				<div className={style.delete} onClick={() => handleClickOption('DeleteNote')}>
-					<Icon icon="trash" />
-				</div>
+				{activeNote.length && (
+					<>
+						<div className={style.delete} onClick={() => handleClickOption('DeleteNote')}>
+							<Icon icon="trash" />
+						</div>
+					</>
+				)}
 
 				<ThemeSwitcher />
 			</div>
