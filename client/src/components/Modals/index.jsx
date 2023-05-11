@@ -7,6 +7,7 @@ import style from './index.module.scss'
 
 /* Modals */
 import DeleteNote from './DeleteNote/DeleteNote'
+import AddNewNote from './AddNewNote/AddNewNote'
 
 const Modals: React.FC = () => {
 	const dispatch = useDispatch()
@@ -23,7 +24,8 @@ const Modals: React.FC = () => {
 			{modal.status && (
 				<div className={style.overlay} onClick={handleClose}>
 					<div className={style.modal} onClick={(e) => e.stopPropagation()}>
-						{modal.name === 'DeleteNote' && <DeleteNote />}
+						{modal.name === 'DeleteNote' && <DeleteNote closeModal={handleClose} name={'title'} />}
+						{modal.name === 'AddNewNote' && <AddNewNote closeModal={handleClose} />}
 					</div>
 				</div>
 			)}
