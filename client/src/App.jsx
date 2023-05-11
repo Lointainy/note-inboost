@@ -44,7 +44,7 @@ export const App = () => {
 	}, [dispatch, userTheme])
 
 	useEffect(() => {
-		// If user is logged in, fetch boards data and set it to store
+		// If user is logged in, fetch notes data and set it to store
 		if (userLogined) {
 			notes.refetch()
 		}
