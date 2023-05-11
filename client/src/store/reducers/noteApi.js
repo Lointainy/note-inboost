@@ -31,9 +31,17 @@ export const notesApi = createApi({
 				body: note
 			}),
 			invalidatesTags: ['Notes']
+		}),
+		createNote: builder.mutation({
+			query: ({ id, note }) => ({
+				url: `/notes`,
+				method: 'PATCH',
+				body: note
+			}),
+			invalidatesTags: ['Notes']
 		})
 	})
 })
 
-export const { useGetNotesQuery, useGetNoteByIdQuery, useUpdateNoteMutation } = notesApi
+export const { useGetNotesQuery, useGetNoteByIdQuery, useUpdateNoteMutation, useCreateNoteMutation } = notesApi
 
