@@ -32,6 +32,7 @@ export default function Sidebar() {
 					return <ListItem note={note} key={note._id} isActive={isActive} handleClick={handleOpenNote} />
 				})}
 			</ul>
+			{!notes.length && <div className={style.hint}>Please create your new note</div>}
 		</div>
 	)
 }

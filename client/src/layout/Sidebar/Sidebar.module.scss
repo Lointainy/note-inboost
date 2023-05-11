@@ -14,3 +14,9 @@
 	width: 100%;
 }
 
+.hint {
+	@include heading-m;
+	color: color(subTitle);
+	text-align: center;
+}
+
