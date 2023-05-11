@@ -10,6 +10,45 @@
 	grid-auto-rows: 1rf;
 }
 
+.note {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: max-content 1fr;
+	row-gap: 2rem;
+	height: 100%;
+	width: 100%;
+}
+
+.note__head {
+	display: grid;
+	grid-auto-flow: column;
+	justify-content: space-between;
+
+	.hint {
+		color: color(subTitle);
+		display: grid;
+		grid-auto-flow: column;
+		align-items: center;
+		column-gap: 1rem;
+
+		&__span {
+			@include btn;
+			@include heading-m;
+			height: 2.5rem;
+			min-width: 1.5rem;
+			padding: 0 0.5rem;
+			background: color(fieldBg);
+			color: color(subTitle);
+			border-radius: calc($border-radius / 2);
+		}
+	}
+
+	.close {
+		@include btn-destructive-l;
+		border-radius: 50%;
+	}
+}
+
 .textarea {
 	outline: none;
 	border: none;
