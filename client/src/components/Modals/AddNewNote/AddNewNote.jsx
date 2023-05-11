@@ -81,7 +81,6 @@ export default function AddNewNote({ closeModal }) {
 						pattern={'^[\\p{L}d\\s]{3,20}$'}
 						placeholder={'Enter the Filter'}
 						onChange={handleChange}
-						autoFocus={true}
 					/>
 					<button type="button" className={style.add__btn} onClick={handleAddFilter}>
 						<Icon icon={'plus'} />
