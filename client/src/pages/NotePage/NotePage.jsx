@@ -14,11 +14,7 @@ import { useToggle } from '../../hooks/useToggle'
 /* Styles */
 import style from './NotePage.module.scss'
 
-/* Components */
-import ReactMarkdown from 'react-markdown'
-
-/* Icons */
-import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
+import { MarkdownPreview, EditorNote } from '../../components'
 
 export default function NotePage() {
 	const dispatch = useDispatch()
@@ -75,29 +71,12 @@ export default function NotePage() {
 			{noteFromApi.isLoading ? (
 				<span className={style.msg}>Loading...</span>
 			) : (
-				<div className={style.note} ref={noteRef}>
+				<div className={style.body} ref={noteRef}>
 					{editing ? (
-						<>
-							<div className={style.note__head}>
-								<p className={style.hint}>
-									Press <span className={style.hint__span}>Esc</span> or <span className={style.hint__span}>Enter + ctrl</span> for the end
-									editing
-								</p>
-								<button onClick={handleToggleEditing} className={style.close}>
-									<Icon icon="circle-xmark" />
-								</button>
-							</div>
-							<textarea
-								value={note?.body}
-								onChange={handleChange}
-								className={style.textarea}
-								autoFocus
-								onKeyDown={handleKeyDown}
-							></textarea>
-						</>
+						<EditorNote body={note?.body} handleToggle={handleToggleEditing} onChange={handleChange} onKeyDown={handleKeyDown} />
 					) : (
 						<div onClick={handleToggleEditing} className={style.textfield}>
-							<ReactMarkdown>{note?.body}</ReactMarkdown>
+							<MarkdownPreview body={note?.body} />
 						</div>
 					)}
 				</div>
