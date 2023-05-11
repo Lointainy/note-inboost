@@ -1,8 +1,8 @@
 /* Store */
 import { toggleSidebar } from '../../store/reducers/uiSlice'
 import { useDispatch } from 'react-redux'
-import { addNote } from '../../store/reducers/noteSlice'
 import { logout } from '../../store/reducers/authSlice'
+import { openModal } from '../../store/reducers/modalSlice'
 
 /* Styles */
 import style from './Header.module.scss'
@@ -16,20 +16,42 @@ import { ThemeSwitcher, SearchBar } from '../../components'
 export default function Header() {
 	const dispatch = useDispatch()
 
+	const handleClickOption = (name) => {
+		switch (name) {
+			case 'AddNewNote':
+				dispatch(openModal({ name: 'AddNewNote' }))
+				break
+			case 'DeleteNote':
+				dispatch(openModal({ name: 'DeleteNote' }))
+				break
+			case 'ToggleSidebar':
+				dispatch(toggleSidebar())
+				break
+			case 'Logout':
+				dispatch(logout())
+				break
+			default:
+				break
+		}
+	}
+
 	return (
 		<div className={style.header}>
 			<div className={style.options}>
-				<div className={style.hidebar} onClick={() => dispatch(toggleSidebar())}>
+				<div className={style.hidebar} onClick={() => handleClickOption('ToggleSidebar')}>
 					<Icon icon="bars" />
 				</div>
-				<div className={style.add} onClick={() => dispatch(addNote())}>
+				<div className={style.add} onClick={() => handleClickOption('AddNewNote')}>
 					<Icon icon="plus" />
+				</div>
+				<div className={style.delete} onClick={() => handleClickOption('DeleteNote')}>
+					<Icon icon="trash" />
 				</div>
 
 				<ThemeSwitcher />
 			</div>
 			<SearchBar />
-			<button onClick={() => dispatch(logout())} className={style.logout}>
+			<button onClick={() => handleClickOption('Logout')} className={style.logout}>
 				<Icon icon="right-from-bracket" />
 				<span>Logout</span>
 			</button>
