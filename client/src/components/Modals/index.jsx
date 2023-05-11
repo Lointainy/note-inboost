@@ -14,6 +14,9 @@ const Modals: React.FC = () => {
 	// Get modal from store
 	const modal = useSelector((store) => store.modal)
 
+	// Get activeNote data
+	const { activeNote } = useSelector((store) => store.note)
+
 	// Close modal
 	const handleClose = () => {
 		dispatch(closeModal())
@@ -24,7 +27,7 @@ const Modals: React.FC = () => {
 			{modal.status && (
 				<div className={style.overlay} onClick={handleClose}>
 					<div className={style.modal} onClick={(e) => e.stopPropagation()}>
-						{modal.name === 'DeleteNote' && <DeleteNote closeModal={handleClose} name={'title'} />}
+						{modal.name === 'DeleteNote' && <DeleteNote closeModal={handleClose} name={activeNote.title} id={activeNote._id} />}
 						{modal.name === 'AddNewNote' && <AddNewNote closeModal={handleClose} />}
 					</div>
 				</div>
