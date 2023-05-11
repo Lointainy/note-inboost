@@ -4,7 +4,7 @@ import { useState } from 'react'
 import style from './Input.module.scss'
 
 const Input = (props) => {
-	const { label, errorMessage, className, onChange, ...inputProps } = props
+	const { label, errorMessage, className, onChange, autoFocus, ...inputProps } = props
 
 	const [focused, setFocused] = useState(false)
 
@@ -17,7 +17,7 @@ const Input = (props) => {
 	return (
 		<div className={`${style.field} ${className && style[className]}`}>
 			<input
-				autoFocus
+				autoFocus={autoFocus}
 				type="text"
 				{...inputProps}
 				onChange={(e) => onChange(e)}
@@ -25,8 +25,8 @@ const Input = (props) => {
 				focused={focus}
 				className={style.input}
 			/>
-			<h4 className={style.label}>{label}</h4>
-			<span className={style.error}>{errorMessage}</span>
+			{label && <h4 className={style.label}>{label}</h4>}
+			{errorMessage && <span className={style.error}>{errorMessage}</span>}
 		</div>
 	)
 }
