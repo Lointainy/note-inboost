@@ -25,8 +25,12 @@ export default function ListItem({ note, isActive, handleClick }) {
 			<h1 className={style.title}>{note.title}</h1>
 			<div className={style.filters}>
 				<ul className={style.filters__list}>
-					{displayFilters.map((filter) => {
-						return <li className={style.filters__item}>{filter}</li>
+					{displayFilters.map((filter, index) => {
+						return (
+							<li className={style.filters__item} key={index}>
+								{filter}
+							</li>
+						)
 					})}
 					{!showAllFilters && note.filters.length > 2 && (
 						<li className={`${style.show}`} onClick={toggleFilters}>
