@@ -17,12 +17,22 @@
 	grid-auto-flow: column;
 	column-gap: 1rem;
 }
+
 .add {
 	@include btn-primary-l;
 }
 
 .hidebar,
-.logout {
+.logout,
+.delete {
 	@include btn-secondary-l;
+}
+
+.delete {
+	color: $color-white;
+	background: $color-red;
+	&:hover {
+		background: $color-red-hover;
+	}
 }
 
