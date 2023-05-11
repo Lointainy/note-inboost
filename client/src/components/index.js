@@ -8,3 +8,6 @@ export { default as CheckBox } from './Standard/CheckBox/CheckBox'
 
 export { default as Input } from './Standard/Input/Input'
 
+export { default as MarkdownPreview } from './MarkdownPreview/MarkdownPreview'
+
+export { default as EditorNote } from './EditorNote/EditorNote'
