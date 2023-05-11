@@ -4,20 +4,20 @@
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-template-rows: max-content 3.5rem;
-	row-gap: 0.5rem;
+	width: 100%;
 }
 
 .field.simple {
 	grid-template-rows: max-content 2.5rem;
-	grid-area: input;
-	row-gap: 0;
 }
 
 .label {
+	margin-bottom: 0.5rem;
 	grid-area: 1 / 1 / 2 / 2;
 }
 
 .error {
+	margin-bottom: 0.5rem;
 	grid-area: 1 / 2 / 2 / 3;
 }
 
