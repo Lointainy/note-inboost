@@ -12,8 +12,8 @@ export default function ListItem({ note, isActive, handleClick }) {
 	return (
 		<li className={`${style.item} ${isActive ? style.active : ''}`} onClick={() => handleClick(note._id)}>
 			<div className={style.title}>{note.title}</div>
-			<ul className={style.filter}>
-				<li>{note.filter}</li>
+			<ul className={style.filters}>
+				<li>{note.filters}</li>
 			</ul>
 			<div className={style.date}>{displayDate}</div>
 		</li>

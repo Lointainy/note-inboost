@@ -13,7 +13,7 @@ const noteSchema = new Schema({
 			body: {
 				type: String
 			},
-			filter: [
+			filters: [
 				{
 					type: String
 				}

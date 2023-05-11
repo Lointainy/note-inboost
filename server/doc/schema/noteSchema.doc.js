@@ -9,7 +9,7 @@ const singleNoteSchema = {
 			type: 'string',
 			example: 'Your default note'
 		},
-		filter: {
+		filters: {
 			type: 'array',
 			items: {
 				type: 'string',

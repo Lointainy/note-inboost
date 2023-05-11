@@ -2,7 +2,7 @@ const { Note } = require('../models/noteModel')
 
 const defaultNote = {
 	title: 'First note',
-	filter: ['default'],
+	filters: ['default'],
 	body: 'This is your first note'
 }
 
