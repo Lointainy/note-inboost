@@ -45,6 +45,27 @@ export default function NotePage() {
 		}
 	}
 
+	const handleEditorOption = (name) => {
+		let newBody = {
+			task: '- [ ] - task',
+			heading: '# Heading'
+		}
+		switch (name) {
+			case 'AddTask':
+				setNote({ ...note, body: note.body + `\n` + newBody.task })
+				break
+			case 'AddHeading':
+				setNote({ ...note, body: note.body + `\n` + newBody.heading })
+				console.log(note)
+				break
+			case 'Close':
+				setEditing(false)
+				break
+			default:
+				break
+		}
+	}
+
 	useEffect(() => {
 		if (noteFromApi.data) {
 			const note = noteFromApi.data
@@ -73,7 +94,7 @@ export default function NotePage() {
 			) : (
 				<div className={style.body} ref={noteRef}>
 					{editing ? (
-						<EditorNote body={note?.body} handleToggle={handleToggleEditing} onChange={handleChange} onKeyDown={handleKeyDown} />
+						<EditorNote body={note?.body} onChange={handleChange} onKeyDown={handleKeyDown} handleOption={handleEditorOption} />
 					) : (
 						<div onClick={handleToggleEditing} className={style.textfield}>
 							<MarkdownPreview body={note?.body} />
