@@ -56,7 +56,6 @@ export default function NotePage() {
 				break
 			case 'AddHeading':
 				setNote({ ...note, body: note.body + `\n` + newBody.heading })
-				console.log(note)
 				break
 			case 'Close':
 				setEditing(false)
