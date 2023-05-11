@@ -6,8 +6,12 @@ import { useDeleteNoteMutation } from '../../../store/reducers/noteApi'
 
 /* Styles */
 import style from './DeleteNote.module.scss'
+import { setAcitveNote } from '../../../store/reducers/noteSlice'
+import { useDispatch } from 'react-redux'
 
 export default function DeleteNote(props) {
+	const dispatch = useDispatch()
+
 	const { closeModal, name, id } = props
 
 	const [deleteNote] = useDeleteNoteMutation()
@@ -18,6 +22,7 @@ export default function DeleteNote(props) {
 		closeModal()
 		deleteNote({ id: id })
 		navigate('/')
+		dispatch(setAcitveNote({}))
 	}
 
 	return (
