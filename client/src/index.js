@@ -21,9 +21,19 @@ import './styles/main.scss'
 
 /* ICONS */
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faSearch, faBars, faPlus, faSun, faMoon, faCircleXmark, faCheck, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import {
+	faSearch,
+	faBars,
+	faPlus,
+	faSun,
+	faMoon,
+	faCircleXmark,
+	faCheck,
+	faRightFromBracket,
+	faTrash
+} from '@fortawesome/free-solid-svg-icons'
 
-library.add(faSearch, faBars, faPlus, faSun, faMoon, faCircleXmark, faCheck, faRightFromBracket)
+library.add(faSearch, faBars, faPlus, faSun, faMoon, faCircleXmark, faCheck, faRightFromBracket, faTrash)
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
