@@ -1,13 +1,24 @@
 import { useEffect, useRef, useState } from 'react'
+
+/* Routes */
 import { useParams } from 'react-router-dom'
+
+/* Store */
+import { useDispatch } from 'react-redux'
 import { useGetNoteByIdQuery, useUpdateNoteMutation } from '../../store/reducers/noteApi'
-import ReactMarkdown from 'react-markdown'
+
+/* Hooks */
 import { useToggle } from '../../hooks/useToggle'
 
 /* Styles */
 import style from './NotePage.module.scss'
 
+/* Components */
+import ReactMarkdown from 'react-markdown'
+import { setAcitveNote } from '../../store/reducers/noteSlice'
+
 export default function NotePage() {
+	const dispatch = useDispatch()
 	const { noteId } = useParams()
 
 	const { toggle, setToggle, handleToggle } = useToggle(false)
@@ -36,7 +47,9 @@ export default function NotePage() {
 
 	useEffect(() => {
 		if (noteFromApi.data) {
-			setNote(noteFromApi.data)
+			const note = noteFromApi.data
+			setNote(note)
+			dispatch(setAcitveNote(note))
 		}
 	}, [noteFromApi.data, noteFromApi.isSuccess])
 

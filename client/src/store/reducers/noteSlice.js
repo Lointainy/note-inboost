@@ -25,11 +25,14 @@ export const noteSlice = createSlice({
 		},
 		setNotes: (state, action) => {
 			state.notes = action.payload
+		},
+		setAcitveNote: (state, action) => {
+			state.activeNote = action.payload
 		}
 	}
 })
 
-export const { addNote, setNotes } = noteSlice.actions
+export const { addNote, setNotes, setAcitveNote } = noteSlice.actions
 
 export default noteSlice.reducer
 
