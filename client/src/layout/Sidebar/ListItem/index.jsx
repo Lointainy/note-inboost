@@ -1,7 +1,13 @@
 import moment from 'moment'
 
+/* Hooks */
+import { useToggle } from '../../../hooks/useToggle'
+
 /* Styles */
 import style from './ListItem.module.scss'
+
+/* Icons */
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 
 export default function ListItem({ note, isActive, handleClick }) {
 	const createdDate = moment(note.updatedAt)
@@ -9,13 +15,33 @@ export default function ListItem({ note, isActive, handleClick }) {
 	const isToday = moment().isSame(createdDate, 'day')
 	const displayDate = isToday ? createdDate.format('HH:mm') : createdDate.format('MMM DD')
 
+	const { toggle: showAllFilters, handleToggle: toggleFilters } = useToggle(false)
+
+	const displayFilters = showAllFilters ? note.filters : note.filters.slice(0, 2)
+
 	return (
-		<li className={`${style.item} ${isActive ? style.active : ''}`} onClick={() => handleClick(note._id)}>
-			<div className={style.title}>{note.title}</div>
-			<ul className={style.filters}>
-				<li>{note.filters}</li>
-			</ul>
+		<li className={`${style.note} ${isActive ? style.active : ''}`} onClick={() => handleClick(note._id)}>
 			<div className={style.date}>{displayDate}</div>
+			<h1 className={style.title}>{note.title}</h1>
+			<div className={style.filters}>
+				<ul className={style.filters__list}>
+					{displayFilters.map((filter) => {
+						return <li className={style.filters__item}>{filter}</li>
+					})}
+					{!showAllFilters && note.filters.length > 2 && (
+						<li className={`${style.show}`} onClick={toggleFilters}>
+							<span>{`+${note.filters.length - 2}`}</span>
+							<Icon icon="chevron-down" />
+						</li>
+					)}
+					{showAllFilters && note.filters.length > 2 && (
+						<li className={style.filters__item} onClick={toggleFilters}>
+							<span>Show less</span>
+							<Icon icon="chevron-up" />
+						</li>
+					)}
+				</ul>
+			</div>
 		</li>
 	)
 }
