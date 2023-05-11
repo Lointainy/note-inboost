@@ -15,6 +15,7 @@
 	justify-content: space-between;
 
 	.hint {
+		user-select: none;
 		color: color(subTitle);
 		display: grid;
 		grid-auto-flow: column;
@@ -30,12 +31,11 @@
 			background: color(fieldBg);
 			color: color(subTitle);
 			border-radius: calc($border-radius / 2);
-		}
-	}
 
-	.close {
-		@include btn-destructive-l;
-		border-radius: 50%;
+			&:hover {
+				cursor: auto;
+			}
+		}
 	}
 }
 
@@ -51,3 +51,4 @@
 	height: 100%;
 	width: 100%;
 }
+
