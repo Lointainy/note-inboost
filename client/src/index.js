@@ -30,10 +30,11 @@ import {
 	faCircleXmark,
 	faCheck,
 	faRightFromBracket,
-	faTrash
+	faTrash,
+	faMinus
 } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faSearch, faBars, faPlus, faSun, faMoon, faCircleXmark, faCheck, faRightFromBracket, faTrash)
+library.add(faSearch, faBars, faPlus, faSun, faMoon, faCircleXmark, faCheck, faRightFromBracket, faTrash, faMinus)
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
