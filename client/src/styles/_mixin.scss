@@ -81,6 +81,20 @@
 	}
 }
 
+@mixin btn-destructive-l {
+	@include btn;
+	@include heading-m;
+	height: 2.5rem;
+	min-width: 1.5rem;
+	padding: 0 0.5rem;
+	color: $color-white;
+	background: $color-red;
+
+	&:hover {
+		background: $color-red-hover;
+	}
+}
+
 /* Container */
 
 // DON`T TOUCH
