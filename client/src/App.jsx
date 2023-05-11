@@ -16,7 +16,7 @@ import { useGetNotesQuery } from './store/reducers/noteApi'
 import './App.scss'
 
 /* Pages */
-import { NotFoundPage, LoginPage, SignUpPage, NotePage } from './pages'
+import { NotFoundPage, LoginPage, SignUpPage, NotePage, HomePage } from './pages'
 
 /* Components */
 import { Modals } from './components'
@@ -63,6 +63,7 @@ export const App = () => {
 					{sidebar && <Sidebar />}
 					<div className={`page-content ${!sidebar ? 'fullsize' : ''}`}>
 						<Routes>
+							<Route index element={<HomePage />} />
 							<Route path={'note/:noteId'} element={<NotePage />} />
 							<Route path={'*'} element={<NotFoundPage />} />
 						</Routes>
