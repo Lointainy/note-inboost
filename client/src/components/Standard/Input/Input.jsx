@@ -4,14 +4,18 @@ import { useState } from 'react'
 import style from './Input.module.scss'
 
 const Input = (props) => {
-	const { label, errorMessage, className, onChange, autoFocus, ...inputProps } = props
+	const { label, errorMessage, className, onChange, autoFocus, isNotFocused, ...inputProps } = props
 
 	const [focused, setFocused] = useState(false)
 
 	const focus: string = focused.toString()
 
 	const handleFocus = () => {
-		setFocused(true)
+		if (isNotFocused) {
+			setFocused(false)
+		} else {
+			setFocused(true)
+		}
 	}
 
 	return (
