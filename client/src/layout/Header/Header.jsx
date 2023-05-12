@@ -26,6 +26,9 @@ export default function Header() {
 			case 'DeleteNote':
 				dispatch(openModal({ name: 'DeleteNote' }))
 				break
+			case 'EditNote':
+				dispatch(openModal({ name: 'EditNote' }))
+				break
 			case 'ToggleSidebar':
 				dispatch(toggleSidebar())
 				break
@@ -50,6 +53,9 @@ export default function Header() {
 					<>
 						<div className={style.delete} onClick={() => handleClickOption('DeleteNote')}>
 							<Icon icon="trash" />
+						</div>
+						<div className={style.edit} onClick={() => handleClickOption('EditNote')}>
+							<Icon icon="pen-to-square" />
 						</div>
 					</>
 				)}
