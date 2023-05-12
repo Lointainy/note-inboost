@@ -64,7 +64,5 @@ const startServer = async () => {
 
 startServer()
 
-module.exports = {
-	app,
-	startServer
-}
+module.exports = startServer
+
