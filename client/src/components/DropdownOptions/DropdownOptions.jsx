@@ -10,19 +10,20 @@ import style from './DropdownOptions.module.scss'
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 
 export default function DropdownOptions({ options, fieldStyle }) {
-	const { toggle, setToggle, handleToggle } = useToggle(false)
+	const { toggle: dropdown, setToggle: setDropdown, handleToggle: toggleDropdown } = useToggle(false)
 
 	const dropdownRef = useRef({})
 
 	const handleClickOption = (option) => {
 		option.onClick()
-		setToggle(false)
+		setDropdown(false)
 	}
 
 	useEffect(() => {
+		// Check if click outside, then close dropdown area
 		const handleOutsideClick = (event: MouseEvent) => {
 			if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-				setToggle(false)
+				setDropdown(false)
 			}
 		}
 		document.addEventListener('mousedown', handleOutsideClick)
@@ -34,11 +35,11 @@ export default function DropdownOptions({ options, fieldStyle }) {
 
 	return (
 		<div className={`${style.option}`} ref={dropdownRef}>
-			<button className={`${style.button}`} onClick={handleToggle}>
+			<button className={`${style.button}`} onClick={toggleDropdown}>
 				option
 				<Icon icon="chevron-down" className={style.icon} />
 			</button>
-			{toggle && (
+			{dropdown && (
 				<div className={`${style.dropdown} ${fieldStyle && style[fieldStyle]}`} onClick={(e) => e.stopPropagation()}>
 					<ul className={style.list}>
 						{options.map((option, index) => (
