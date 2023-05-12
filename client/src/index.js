@@ -33,7 +33,8 @@ import {
 	faTrash,
 	faMinus,
 	faChevronUp,
-	faChevronDown
+	faChevronDown,
+	faPenToSquare
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -48,7 +49,8 @@ library.add(
 	faTrash,
 	faMinus,
 	faChevronUp,
-	faChevronDown
+	faChevronDown,
+	faPenToSquare
 )
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
