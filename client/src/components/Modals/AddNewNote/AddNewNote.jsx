@@ -44,10 +44,15 @@ export default function AddNewNote({ closeModal }) {
 	}
 
 	const handleAddFilter = () => {
-		let updatedFilters = [...form.filters, newFilter]
-		if (updatedFilters) {
-			setForm((prev) => ({ ...prev, filters: updatedFilters }))
-			setNewFilter('')
+		const regex = /^[A-Za-zА-Яа-яІіЇїЄєҐґ]{3,24}$/u
+		if (regex.test(newFilter) === true) {
+			let updatedFilters = [...form.filters, newFilter]
+			if (updatedFilters) {
+				setForm((prev) => ({ ...prev, filters: updatedFilters }))
+				setNewFilter('')
+			}
+		} else {
+			return
 		}
 	}
 
@@ -66,7 +71,7 @@ export default function AddNewNote({ closeModal }) {
 				label={'title'}
 				name={'title'}
 				value={form.title}
-				pattern={'^[\\p{L}d\\s]{3,20}$'}
+				pattern={'^[A-Za-zА-Яа-яІіЇїЄєҐґ -]{3,24}$'}
 				placeholder={'Enter the title'}
 				errorMessage={'Wrong format'}
 				onChange={handleChange}
@@ -78,7 +83,7 @@ export default function AddNewNote({ closeModal }) {
 						className={'simple'}
 						name={'newFilter'}
 						value={newFilter}
-						pattern={'^[\\p{L}d\\s]{3,20}$'}
+						pattern={'^[A-Za-zА-Яа-яІіЇїЄєҐґ]{3,24}$'}
 						placeholder={'Enter the Filter'}
 						onChange={handleChange}
 					/>
