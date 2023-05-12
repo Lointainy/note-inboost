@@ -34,8 +34,9 @@ export default function EditNote({ closeModal, note }) {
 	}
 
 	const handleAddFilter = () => {
-		const regex = /^[\\p{L}d\s]{3,20}$/u
+		const regex = /^[A-Za-zА-Яа-яІіЇїЄєҐґ]{3,24}$/u
 		if (regex.test(filterInput) === true) {
+			console.log(filterInput)
 			setForm((prev) => ({ ...prev, filters: [...prev.filters, filterInput] }))
 			setFilterInput('')
 			setFilterInputError(false)
@@ -60,7 +61,7 @@ export default function EditNote({ closeModal, note }) {
 				label={'title'}
 				name={'title'}
 				value={form.title}
-				pattern={'^[\\p{L}d\\s]{3,20}$'}
+				pattern={'^[A-Za-zА-Яа-яІіЇїЄєҐґ -]{3,24}$'}
 				placeholder={'Enter the title'}
 				errorMessage={'Wrong format'}
 				onChange={handleChange}
@@ -74,7 +75,7 @@ export default function EditNote({ closeModal, note }) {
 						id={'edit-newFilter'}
 						name={'newFilter'}
 						value={filterInput}
-						pattern={'^[\\p{L}d]{3,20}$'}
+						pattern={'^[A-Za-zА-Яа-яІіЇїЄєҐґ]{3,24}$'}
 						placeholder={'Enter the Filter'}
 						onChange={handleChange}
 					/>
