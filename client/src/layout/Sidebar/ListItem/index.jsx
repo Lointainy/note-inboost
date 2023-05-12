@@ -10,14 +10,15 @@ import style from './ListItem.module.scss'
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 
 export default function ListItem({ note, isActive, handleClick }) {
+	// filtering to display the date
 	const createdDate = moment(note.updatedAt)
+	const isToday = moment().isSame(createdDate, 'day') // show if date is today
+	const displayDate = isToday ? createdDate.format('HH:mm') : createdDate.format('MMM DD') // other days
 
-	const isToday = moment().isSame(createdDate, 'day')
-	const displayDate = isToday ? createdDate.format('HH:mm') : createdDate.format('MMM DD')
-
+	// Slice filters for show more
 	const { toggle: showAllFilters, handleToggle: toggleFilters } = useToggle(false)
-
-	const displayFilters = showAllFilters ? note.filters : note.filters.slice(0, 2)
+	const maxShowFilters = 2
+	const displayFilters = showAllFilters ? note.filters : note.filters.slice(0, maxShowFilters)
 
 	return (
 		<li className={`${style.note} ${isActive ? style.active : ''}`} onClick={() => handleClick(note._id)}>
@@ -32,13 +33,13 @@ export default function ListItem({ note, isActive, handleClick }) {
 							</li>
 						)
 					})}
-					{!showAllFilters && note.filters.length > 2 && (
+					{!showAllFilters && note.filters.length > maxShowFilters && (
 						<li className={`${style.show}`} onClick={toggleFilters}>
 							<span>{`+${note.filters.length - 2}`}</span>
 							<Icon icon="chevron-down" />
 						</li>
 					)}
-					{showAllFilters && note.filters.length > 2 && (
+					{showAllFilters && note.filters.length > maxShowFilters && (
 						<li className={style.filters__item} onClick={toggleFilters}>
 							<span>Show less</span>
 							<Icon icon="chevron-up" />
