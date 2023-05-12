@@ -59,7 +59,7 @@ const createNote = async (req, res) => {
 	}
 }
 
-const updateNote = async (req, res) => {
+const updateNoteById = async (req, res) => {
 	let user_id = req.user._id
 	let note_id = req.params.id
 	let updatedNote = req.body
@@ -81,7 +81,7 @@ const updateNote = async (req, res) => {
 	}
 }
 
-const deleteNote = async (req, res) => {
+const deleteNoteById = async (req, res) => {
 	let user_id = req.user._id
 	let note_id = req.params.id
 
@@ -103,5 +103,5 @@ const deleteNote = async (req, res) => {
 	}
 }
 
-module.exports = { getNotes, getNoteById, createNote, updateNote, deleteNote }
+module.exports = { getNotes, getNoteById, createNote, updateNoteById, deleteNoteById }
 
