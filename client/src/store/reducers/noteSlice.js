@@ -1,28 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { v4 as uuidv4 } from 'uuid'
-import moment from 'moment'
 
 const initialState = {
 	notes: [],
 	activeNote: {}
 }
 
-const defaultNote = {
-	_id: '',
-	title: 'New note',
-	updatedDate: '',
-	filter: ['default'],
-	body: ''
-}
-
 export const noteSlice = createSlice({
 	name: 'note',
 	initialState,
 	reducers: {
-		addNote: (state) => {
-			state.notes = [...state.notes, { ...defaultNote, _id: uuidv4(), updatedAt: moment().format() }]
-			console.log(JSON.stringify(state.notes))
-		},
 		setNotes: (state, action) => {
 			state.notes = action.payload
 		},
@@ -32,7 +18,7 @@ export const noteSlice = createSlice({
 	}
 })
 
-export const { addNote, setNotes, setAcitveNote } = noteSlice.actions
+export const { setNotes, setAcitveNote } = noteSlice.actions
 
 export default noteSlice.reducer
 
