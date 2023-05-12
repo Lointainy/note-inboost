@@ -1,20 +1,65 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
 import reportWebVitals from './reportWebVitals'
+
+import App from './App'
+
+/* Router */
+import { BrowserRouter as Router } from 'react-router-dom'
 
 /* Store */
 import { Provider } from 'react-redux'
 import { store } from './store/store'
 
+/* Fonts */
+import '@fontsource/montserrat'
+import '@fontsource/montserrat/500.css'
+import '@fontsource/montserrat/700.css'
+
 /* Styles */
 import './styles/main.scss'
+
+/* ICONS */
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {
+	faSearch,
+	faBars,
+	faPlus,
+	faSun,
+	faMoon,
+	faCircleXmark,
+	faCheck,
+	faRightFromBracket,
+	faTrash,
+	faMinus,
+	faChevronUp,
+	faChevronDown,
+	faPenToSquare
+} from '@fortawesome/free-solid-svg-icons'
+
+library.add(
+	faSearch,
+	faBars,
+	faPlus,
+	faSun,
+	faMoon,
+	faCircleXmark,
+	faCheck,
+	faRightFromBracket,
+	faTrash,
+	faMinus,
+	faChevronUp,
+	faChevronDown,
+	faPenToSquare
+)
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<App />
+			<Router>
+				<App />
+			</Router>
 		</Provider>
 	</React.StrictMode>
 )

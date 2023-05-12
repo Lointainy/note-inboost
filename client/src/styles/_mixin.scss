@@ -1,3 +1,129 @@
+/* Heading */
+
+@mixin heading-l {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 18px;
+	font-weight: 700;
+	letter-spacing: 0px;
+}
+
+@mixin heading-m {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	font-weight: 700;
+	letter-spacing: 0px;
+}
+
+@mixin heading-s {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 2.4000000953674316px;
+}
+
+@mixin body-l {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 13px;
+	font-weight: 500;
+	letter-spacing: 0px;
+}
+
+@mixin body-m {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0px;
+}
+
+/* Buttons */
+
+@mixin btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+
+	&:hover {
+		cursor: pointer;
+		transition: $animate;
+	}
+}
+
+@mixin btn-primary-l {
+	@include btn;
+	@include heading-m;
+	height: 2.5rem;
+	min-width: 1.5rem;
+	padding: 0 0.5rem;
+	color: $color-white;
+	background: color(btnPr);
+	border-radius: calc($border-radius / 2);
+
+	&:hover {
+		background: color(btnPrHover);
+	}
+}
+
+@mixin btn-primary-s {
+	@include btn;
+	@include heading-s;
+	height: 1.25rem;
+	min-width: 0.75rem;
+	padding: 0 0.25rem;
+	color: $color-white;
+	background: color(btnPr);
+	border-radius: calc($border-radius / 2);
+
+	&:hover {
+		background: color(btnPrHover);
+	}
+}
+
+@mixin btn-secondary-l {
+	@include btn;
+	@include heading-m;
+	height: 2.5rem;
+	min-width: 1.5rem;
+	padding: 0 0.5rem;
+	background: color(bg);
+	color: color(subTitle);
+	border-radius: calc($border-radius / 2);
+
+	&:hover {
+		color: $color-white;
+		background: color(subTitle);
+	}
+}
+
+@mixin btn-destructive-l {
+	@include btn;
+	@include heading-m;
+	height: 2.5rem;
+	min-width: 1.5rem;
+	padding: 0 0.5rem;
+	color: $color-white;
+	background: $color-red;
+
+	&:hover {
+		background: $color-red-hover;
+	}
+}
+
+@mixin btn-destructive-s {
+	@include btn;
+	@include heading-s;
+	height: 1.25rem;
+	min-width: 0.75rem;
+	padding: 0 0.25rem;
+	color: $color-white;
+	background: $color-red;
+	border-radius: calc($border-radius / 2);
+
+	&:hover {
+		background: $color-red-hover;
+	}
+}
+
 /* Container */
 
 // DON`T TOUCH

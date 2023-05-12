@@ -1,0 +1,27 @@
+@import '../../styles/main.scss';
+
+.sidebar {
+	grid-column: 1;
+	grid-row: 2;
+	background: color(fieldBg);
+	padding: 1rem;
+	overflow-y: scroll;
+}
+
+.list {
+	display: grid;
+	grid-auto-flow: row;
+	row-gap: 1rem;
+	width: 100%;
+}
+
+.hint {
+	@include heading-m;
+	color: color(subTitle);
+	text-align: center;
+}
+
+.show {
+	@include btn-secondary-l;
+}
+

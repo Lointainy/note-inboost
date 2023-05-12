@@ -1,0 +1,61 @@
+@import '../../styles/main.scss';
+
+.option {
+	user-select: none;
+	width: auto;
+	height: 24px;
+	position: relative;
+}
+
+.button {
+	@include btn-primary-l;
+
+	.icon {
+		color: $color-white;
+	}
+}
+
+.dropdown {
+	position: absolute;
+	background: color(bg);
+	right: 0;
+	top: 3rem;
+	width: 8rem;
+	border-radius: $border-radius;
+	display: grid;
+	grid-auto-flow: row;
+	padding: 16px;
+	box-shadow: $box-shadow;
+}
+
+.list {
+	display: grid;
+	grid-auto-flow: row;
+	row-gap: 1rem;
+	list-style-type: none;
+}
+
+.item {
+	color: color(subTitle);
+
+	&:hover {
+		opacity: 0.6;
+		cursor: pointer;
+	}
+}
+
+.item.error {
+	color: $color-red;
+
+	&:hover {
+		opacity: 1;
+		color: $color-red-hover;
+	}
+}
+
+/* Invert styles */
+
+.dropdown.invert {
+	background: color(fieldBg);
+}
+

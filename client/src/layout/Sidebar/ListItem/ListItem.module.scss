@@ -1,0 +1,69 @@
+@import '../../../styles/main.scss';
+
+.note {
+	display: grid;
+	grid-template-columns: 1.7fr 0.3fr;
+	grid-template-rows: repeat(2, max-content);
+	justify-content: space-between;
+	row-gap: 0.25rem;
+	padding: 1rem;
+	background: color(bg);
+	border-radius: $border-radius;
+
+	&:hover {
+		transition: $animate;
+		background: $color-main-purple-hover;
+		cursor: pointer;
+		.title {
+			color: $color-white;
+		}
+	}
+}
+
+.note.active {
+	outline: 2px solid $color-main-purple;
+}
+
+.title {
+	grid-row: 1;
+	grid-column: span 2;
+	color: color(title);
+}
+
+.show {
+	@include btn-primary-s;
+}
+
+.filters {
+	grid-column: span 2;
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem;
+	}
+
+	&__item {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		list-style: none;
+		height: 2.5rem;
+		min-width: 1.5rem;
+		padding: 0 0.5rem;
+		color: color(subTitle);
+		border-radius: calc($border-radius / 2);
+		background: color(fieldBg);
+		font-weight: 500;
+	}
+}
+
+.date {
+	grid-column: span 2;
+	display: grid;
+	align-items: center;
+	color: $color-main-purple;
+	@include body-m;
+}
+

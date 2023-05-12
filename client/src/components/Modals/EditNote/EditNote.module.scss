@@ -1,0 +1,60 @@
+@import '../../../styles/main';
+
+.form {
+	display: grid;
+	grid-auto-flow: row;
+	row-gap: 1rem;
+}
+
+.add__note {
+	@include btn-primary-l;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.add {
+	display: grid;
+	grid-auto-flow: row;
+	row-gap: 1rem;
+
+	&__btn {
+		@include btn-primary-l;
+	}
+
+	&__error {
+		@include heading-s;
+		color: $color-red;
+		text-align: center;
+	}
+}
+
+.delete {
+	@include btn-destructive-s;
+	display: none;
+}
+
+.filters {
+	display: grid;
+	flex-direction: row;
+	gap: 1rem;
+	align-items: center;
+
+	&__list {
+		display: flex;
+		flex-direction: row;
+		gap: 1rem;
+	}
+
+	&__item {
+		@include btn-secondary-l;
+		font-weight: 500;
+
+		&:hover {
+			.delete {
+				display: grid;
+				align-items: center;
+			}
+		}
+	}
+}
+

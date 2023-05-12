@@ -1,0 +1,40 @@
+@import '../../styles/main.scss';
+
+.header {
+	padding: 0 2rem;
+	grid-column: span 2;
+	grid-row: 1;
+	background: color(fieldBg);
+	display: grid;
+	grid-auto-flow: column;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid color(lineBg);
+	grid-template-columns: max-content 0.3fr max-content;
+}
+
+.options {
+	display: grid;
+	grid-auto-flow: column;
+	column-gap: 1rem;
+}
+
+.add {
+	@include btn-primary-l;
+}
+
+.hidebar,
+.logout,
+.delete,
+.edit {
+	@include btn-secondary-l;
+}
+
+.delete {
+	color: $color-white;
+	background: $color-red;
+	&:hover {
+		background: $color-red-hover;
+	}
+}
+
