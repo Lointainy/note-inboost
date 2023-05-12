@@ -52,3 +52,13 @@
 	width: 100%;
 }
 
+/* Media */
+@include media(md, mx) {
+	.note__head {
+		justify-content: end;
+		.hint {
+			display: none;
+		}
+	}
+}
+

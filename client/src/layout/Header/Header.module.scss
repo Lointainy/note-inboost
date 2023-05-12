@@ -11,6 +11,7 @@
 	align-items: center;
 	border-bottom: 1px solid color(lineBg);
 	grid-template-columns: max-content 0.3fr max-content;
+	column-gap: 1rem;
 }
 
 .options {
@@ -35,6 +36,38 @@
 	background: $color-red;
 	&:hover {
 		background: $color-red-hover;
+	}
+}
+
+/* Media */
+@include media(md, mx) {
+	.header {
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: repeat(3, max-content);
+		row-gap: 1rem;
+	}
+
+	.option {
+		grid-column: 1;
+	}
+
+	.logout {
+		grid-column: 2;
+	}
+
+	.bar {
+		grid-row: 2px;
+		grid-column: span 2;
+	}
+}
+
+@include media(sm, mx) {
+	.logout {
+		&__span {
+			display: none;
+		}
 	}
 }
 

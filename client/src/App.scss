@@ -6,6 +6,7 @@
 }
 
 .grid {
+	position: relative;
 	width: 100%;
 	height: 100%;
 	display: grid;
@@ -21,5 +22,14 @@
 
 .page-content.fullsize {
 	grid-column: span 2;
+}
+
+/* Media */
+
+@include media(md, mx) {
+	.grid {
+		grid-template-rows: max-content 1fr;
+		grid-template-columns: 1fr;
+	}
 }
 

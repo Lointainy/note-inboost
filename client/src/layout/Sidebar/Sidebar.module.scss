@@ -4,15 +4,14 @@
 	grid-column: 1;
 	grid-row: 2;
 	background: color(fieldBg);
-	padding: 1rem;
 	overflow-y: scroll;
 }
 
 .list {
+	padding: 1rem;
 	display: grid;
 	grid-auto-flow: row;
 	row-gap: 1rem;
-	width: 100%;
 }
 
 .hint {
@@ -23,5 +22,13 @@
 
 .show {
 	@include btn-secondary-l;
+}
+
+/* Media */
+@include media(md, mx) {
+	.sidebar {
+		position: absolute;
+		width: 100%;
+	}
 }
 

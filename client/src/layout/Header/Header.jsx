@@ -61,13 +61,14 @@ export default function Header() {
 						</div>
 					</>
 				)}
-
 				<ThemeSwitcher />
 			</div>
-			<SearchBar />
+			<div className={style.bar}>
+				<SearchBar />
+			</div>
 			<button onClick={() => handleClickOption('Logout')} className={style.logout}>
 				<Icon icon="right-from-bracket" />
-				<span>Logout</span>
+				<span className={style.logout__span}>Logout</span>
 			</button>
 		</div>
 	)
