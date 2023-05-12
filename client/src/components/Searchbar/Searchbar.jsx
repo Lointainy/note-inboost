@@ -17,6 +17,8 @@ import style from './SearchBar.module.scss'
 /* Icons */
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 
+import React from 'react'
+
 export default function SearchBar() {
 	const navigate = useNavigate()
 
