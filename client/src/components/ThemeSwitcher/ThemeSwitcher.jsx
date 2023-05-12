@@ -17,13 +17,9 @@ export default function ThemeSwitcher() {
 	}, [theme, dispatch, userTheme])
 
 	return (
-		<div className={style.theme}>
-			<Icon icon="sun" className={`${style.icon} ${!theme && style.accent}`} />
-			<label htmlFor="switcher" className={style.switch}>
-				<input type="checkbox" id="switcher" checked={theme} onChange={toggleTheme} />
-				<span className={style.slider}></span>
-			</label>
-			<Icon icon="moon" className={`${style.icon} ${theme && style.accent}`} />
+		<div className={style.theme} onClick={toggleTheme}>
+			{!theme && <Icon icon="sun" className={`${style.icon}`} />}
+			{theme && <Icon icon="moon" className={`${style.icon} ${theme && style.accent}`} />}
 		</div>
 	)
 }
