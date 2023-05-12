@@ -21,14 +21,19 @@ export default function NotePage() {
 
 	const { noteId } = useParams()
 
+	// Toggler
 	const { toggle: editing, setToggle: setEditing, handleToggle: handleToggleEditing } = useToggle(false)
+	const { toggle: focusTextArea, setToggle: setFocusTextArea } = useToggle(false)
 
+	// Set data to API
 	const [updateNote] = useUpdateNoteMutation()
+
+	// Get data from API
+	const noteFromApi = useGetNoteByIdQuery(noteId)
 
 	const noteRef = useRef({})
 
-	const noteFromApi = useGetNoteByIdQuery(noteId)
-
+	// Set note data from API after requst
 	const [note, setNote] = useState({})
 
 	const handleChange = (e) => {
@@ -53,9 +58,17 @@ export default function NotePage() {
 		switch (name) {
 			case 'AddTask':
 				setNote({ ...note, body: note.body + `\n` + newBody.task })
+				setFocusTextArea(true)
+				setTimeout(() => {
+					setFocusTextArea(false)
+				}, 0)
 				break
 			case 'AddHeading':
 				setNote({ ...note, body: note.body + `\n` + newBody.heading })
+				setFocusTextArea(true)
+				setTimeout(() => {
+					setFocusTextArea(false)
+				}, 0)
 				break
 			case 'Close':
 				setEditing(false)
@@ -66,14 +79,17 @@ export default function NotePage() {
 	}
 
 	useEffect(() => {
+		// Set note data from API after requst
 		if (noteFromApi.data) {
 			const note = noteFromApi.data
 			setNote(note)
+			//Set active note to store
 			dispatch(setAcitveNote(note))
 		}
 	}, [noteFromApi.data, noteFromApi.isSuccess])
 
 	useEffect(() => {
+		// If click outside stop editing
 		const handleOutsideClick = (event) => {
 			if (noteRef.current && !noteRef.current.contains(event.target)) {
 				setEditing(false)
@@ -93,7 +109,13 @@ export default function NotePage() {
 			) : (
 				<div className={style.body} ref={noteRef}>
 					{editing ? (
-						<EditorNote body={note?.body} onChange={handleChange} onKeyDown={handleKeyDown} handleOption={handleEditorOption} />
+						<EditorNote
+							body={note?.body}
+							onChange={handleChange}
+							onKeyDown={handleKeyDown}
+							handleOption={handleEditorOption}
+							focus={focusTextArea}
+						/>
 					) : (
 						<div onClick={handleToggleEditing} className={style.textfield}>
 							<MarkdownPreview body={note?.body} />
