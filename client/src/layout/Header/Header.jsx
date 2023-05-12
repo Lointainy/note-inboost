@@ -16,8 +16,10 @@ import { ThemeSwitcher, SearchBar } from '../../components'
 export default function Header() {
 	const dispatch = useDispatch()
 
-	const { activeNote } = useSelector((store) => store.note)
+	// If note is active then  shows buttons
+	const { title: isActive } = useSelector((store) => store.note.activeNote)
 
+	// Switch Options
 	const handleClickOption = (name) => {
 		switch (name) {
 			case 'AddNewNote':
@@ -49,7 +51,7 @@ export default function Header() {
 				<div className={style.add} onClick={() => handleClickOption('AddNewNote')}>
 					<Icon icon="plus" />
 				</div>
-				{activeNote.title && (
+				{isActive && (
 					<>
 						<div className={style.delete} onClick={() => handleClickOption('DeleteNote')}>
 							<Icon icon="trash" />
