@@ -10,9 +10,12 @@ import { useDispatch, useSelector } from 'react-redux'
 const AuthWrapper = (WrappedComponent) => {
 	const AuthWrapperComponent = (props) => {
 		const dispatch = useDispatch()
+
 		const { pathname } = useLocation()
+
 		const userLogined = useSelector((store) => store.auth.login)
 
+		// Switch mounted component
 		const [isMounted, setIsMounted] = useState(false)
 
 		useEffect(() => {
