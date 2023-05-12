@@ -14,19 +14,16 @@ import style from './SignUpPage.module.scss'
 /* Components */
 import { CheckBox, Input } from '../../components'
 
-const defaultForm = {
-	email: '',
-	password: '',
-	rememberUser: false
-}
+/* Utils */
+import { defaultFormData } from '../../utils/form'
 
 export default function SignUpPage() {
 	const dispatch = useDispatch()
 
-	/* Form logic */
+	// Form data
+	const [form, setForm] = useState(defaultFormData)
 
-	const [form, setForm] = useState(defaultForm)
-
+	// est user data to API, if successful then login user
 	const [signup, { isError: loginError }] = useSignupMutation()
 
 	const handleChange = (e) => {
@@ -36,6 +33,7 @@ export default function SignUpPage() {
 		}))
 	}
 
+	// Remember user for next session
 	const handleChecked = () => {
 		setForm((prev) => ({ ...prev, rememberUser: !prev.rememberUser }))
 	}
@@ -47,7 +45,7 @@ export default function SignUpPage() {
 			const { data } = await signup(form)
 			dispatch(setToken({ token: data.token, rememberUser: form.rememberUser }))
 		} catch (error) {
-			setForm(defaultForm)
+			setForm(defaultFormData)
 		}
 	}
 

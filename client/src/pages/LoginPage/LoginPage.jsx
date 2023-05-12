@@ -14,19 +14,16 @@ import style from './LoginPage.module.scss'
 /* Components */
 import { CheckBox, Input } from '../../components'
 
-const defaultForm = {
-	email: '',
-	password: '',
-	rememberUser: false
-}
+/* Utils */
+import { defaultFormData } from '../../utils/form'
 
 export default function LoginPage() {
 	const dispatch = useDispatch()
 
-	/* Form logic */
+	// Form data
+	const [form, setForm] = useState(defaultFormData)
 
-	const [form, setForm] = useState(defaultForm)
-
+	// Check user data with API, if successful then login user
 	const [login, { isError: loginError }] = useLoginMutation()
 
 	const handleChange = (e) => {
@@ -36,6 +33,7 @@ export default function LoginPage() {
 		}))
 	}
 
+	// Remember user for next session
 	const handleChecked = () => {
 		setForm((prev) => ({ ...prev, rememberUser: !prev.rememberUser }))
 	}
@@ -47,7 +45,7 @@ export default function LoginPage() {
 			const { data } = await login(form)
 			dispatch(setToken({ token: data.token, rememberUser: form.rememberUser }))
 		} catch (error) {
-			setForm(defaultForm)
+			setForm(defaultFormData)
 		}
 	}
 
