@@ -9,9 +9,9 @@
 	padding: 1rem;
 	background: color(bg);
 	border-radius: $border-radius;
-	transition: $animate;
 
 	&:hover {
+		transition: $animate;
 		background: $color-main-purple-hover;
 		cursor: pointer;
 		.title {
