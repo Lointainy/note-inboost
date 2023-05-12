@@ -30,7 +30,7 @@ export const notesApi = createApi({
 				method: 'PATCH',
 				body: note
 			}),
-			invalidatesTags: ['Notes']
+			invalidatesTags: ['Notes', 'Note']
 		}),
 		createNote: builder.mutation({
 			query: (note) => ({
