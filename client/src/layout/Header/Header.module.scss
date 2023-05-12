@@ -24,7 +24,8 @@
 
 .hidebar,
 .logout,
-.delete {
+.delete,
+.edit {
 	@include btn-secondary-l;
 }
 
