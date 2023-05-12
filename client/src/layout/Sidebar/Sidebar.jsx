@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 /* Router */
 import { useNavigate } from 'react-router-dom'
@@ -23,15 +23,17 @@ export default function Sidebar() {
 
 	const navigate = useNavigate()
 
-	const [activeId, setActiveId] = useState('')
+	// Get activeId from store
+	const { _id: activeId } = useSelector((store) => store.note.activeNote)
 
 	const { toggle: showAllNotes, handleToggle: toggleShowNotes } = useToggle(false)
 
-	const displayNotes = showAllNotes ? notes : notes.slice(0, 5)
+	// Slice notes for show more
+	const maxShowNotes = 5
+	const displayNotes = showAllNotes ? notes : notes.slice(0, maxShowNotes)
 
 	const handleOpenNote = (id) => {
 		navigate(`/note/${id}`)
-		setActiveId(id)
 	}
 
 	return (
@@ -41,13 +43,13 @@ export default function Sidebar() {
 					const isActive = note._id === activeId
 					return <ListItem note={note} key={note._id} isActive={isActive} handleClick={handleOpenNote} />
 				})}
-				{!showAllNotes && notes.length > 5 && (
+				{!showAllNotes && notes.length > maxShowNotes && (
 					<li className={`${style.show}`} onClick={toggleShowNotes}>
-						<span>{`+${notes.length - 5}`} more</span>
+						<span>{`+${notes.length - maxShowNotes}`} more</span>
 						<Icon icon="chevron-down" />
 					</li>
 				)}
-				{showAllNotes && notes.length > 5 && (
+				{showAllNotes && notes.length > maxShowNotes && (
 					<li className={style.show} onClick={toggleShowNotes}>
 						<span>Show less</span>
 						<Icon icon="chevron-up" />
