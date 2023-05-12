@@ -9,9 +9,14 @@
 	padding: 1rem;
 	background: color(bg);
 	border-radius: $border-radius;
+	transition: $animate;
 
 	&:hover {
+		background: $color-main-purple-hover;
 		cursor: pointer;
+		.title {
+			color: $color-white;
+		}
 	}
 }
 
@@ -39,7 +44,16 @@
 	}
 
 	&__item {
-		@include btn-secondary-l;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		list-style: none;
+		height: 2.5rem;
+		min-width: 1.5rem;
+		padding: 0 0.5rem;
+		color: color(subTitle);
+		border-radius: calc($border-radius / 2);
 		background: color(fieldBg);
 		font-weight: 500;
 	}

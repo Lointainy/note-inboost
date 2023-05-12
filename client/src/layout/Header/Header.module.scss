@@ -10,6 +10,7 @@
 	justify-content: space-between;
 	align-items: center;
 	border-bottom: 1px solid color(lineBg);
+	grid-template-columns: max-content 0.3fr max-content;
 }
 
 .options {
