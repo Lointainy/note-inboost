@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 /* Routes */
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 /* Store */
 import { useDispatch } from 'react-redux'
@@ -20,6 +20,7 @@ export default function NotePage() {
 	const dispatch = useDispatch()
 
 	const { noteId } = useParams()
+	const navigate = useNavigate()
 
 	// Toggler
 	const { toggle: editing, setToggle: setEditing, handleToggle: handleToggleEditing } = useToggle(false)
@@ -80,11 +81,15 @@ export default function NotePage() {
 
 	useEffect(() => {
 		// Set note data from API after requst
-		if (noteFromApi.data) {
+		if (noteFromApi.data && noteFromApi.isSuccess) {
 			const note = noteFromApi.data
 			setNote(note)
 			//Set active note to store
 			dispatch(setAcitveNote(note))
+			document.title = note.title
+		}
+		if (noteFromApi.isError) {
+			navigate('/')
 		}
 	}, [noteFromApi.data, noteFromApi.isSuccess])
 

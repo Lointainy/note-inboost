@@ -20,6 +20,8 @@ import { defaultFormData } from '../../utils/form'
 export default function LoginPage() {
 	const dispatch = useDispatch()
 
+	document.title = 'Login'
+
 	// Form data
 	const [form, setForm] = useState(defaultFormData)
 
