@@ -6,25 +6,15 @@ const dotenv = require('dotenv').config()
 
 const connectDB = require('./config/connectDB')
 
-/* Routes */
-const userRoutes = require('./routes/user')
-const noteRoutes = require('./routes/note')
-
-/* SWAGGER */
 const swaggerUI = require('swagger-ui-express')
 const { swaggerDoc, optionDoc } = require('./doc/documentation')
+
+const userRoutes = require('./routes/user')
+const noteRoutes = require('./routes/note')
 
 /* Initial app */
 const app = express()
 const PORT = process.env.PORT || 4000
-
-// Home Page
-app.get('/', (req, res) => {
-	res.redirect('/docs')
-})
-
-/* Route for SwaggerUi */
-app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDoc, optionDoc))
 
 /* Cors */
 
@@ -47,7 +37,14 @@ app.use((req, res, next) => {
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-/* Routes */
+// Home Page
+app.get('/', (req, res) => {
+	res.redirect('/docs')
+})
+
+/* Route for SwaggerUi */
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDoc, optionDoc))
+
 app.use('/api/user', userRoutes)
 app.use('/api/notes', noteRoutes)
 
@@ -63,6 +60,4 @@ const startServer = async () => {
 }
 
 startServer()
-
-module.exports = startServer
 
