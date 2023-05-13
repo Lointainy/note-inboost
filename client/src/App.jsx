@@ -4,19 +4,19 @@ import { useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 
 /* Hooks */
-import useTheme from './hooks/useTheme'
 import authWrapper from './hooks/authWrapper'
+import useTheme from './hooks/useTheme'
 
 /* Store */
 import { useDispatch, useSelector } from 'react-redux'
-import { setTheme } from './store/reducers/uiSlice'
 import { useGetNotesQuery } from './store/reducers/noteApi'
+import { setTheme } from './store/reducers/uiSlice'
 
 /* Styles */
 import './App.scss'
 
 /* Pages */
-import { NotFoundPage, LoginPage, SignUpPage, NotePage, HomePage } from './pages'
+import { HomePage, LoginPage, NotFoundPage, NotePage, SignUpPage } from './pages'
 
 /* Components */
 import { Modals } from './components'
@@ -52,6 +52,7 @@ export const App = () => {
 		if (notes.data && notes.isSuccess) {
 			dispatch(setNotes(notes.data))
 		}
+		// eslint-disable-next-line
 	}, [userLogined, pathname, notes.data, notes.isLoading, notes.isSuccess])
 
 	if (userLogined && !pathname.includes('/login')) {

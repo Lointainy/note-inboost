@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
 import moment from 'moment'
+import { useEffect } from 'react'
 
 /* Routes*/
 import { useNavigate } from 'react-router-dom'
@@ -54,7 +54,7 @@ export default function SearchBar() {
 		} else {
 			setDropdown(false)
 		}
-	}, [search.value])
+	}, [search.value, searchOptions, setDropdown])
 
 	return (
 		<div className={`${style.search} ${dropdown ? style.active : ''}`}>

@@ -14,7 +14,7 @@ import { useToggle } from '../../hooks/useToggle'
 /* Styles */
 import style from './NotePage.module.scss'
 
-import { MarkdownPreview, EditorNote } from '../../components'
+import { EditorNote, MarkdownPreview } from '../../components'
 
 export default function NotePage() {
 	const dispatch = useDispatch()
@@ -91,7 +91,7 @@ export default function NotePage() {
 		if (noteFromApi.isError) {
 			navigate('/')
 		}
-	}, [noteFromApi.data, noteFromApi.isSuccess])
+	}, [noteFromApi, dispatch, navigate])
 
 	useEffect(() => {
 		// If click outside stop editing
@@ -105,7 +105,7 @@ export default function NotePage() {
 		return () => {
 			document.removeEventListener('mousedown', handleOutsideClick)
 		}
-	}, [])
+	}, [setEditing])
 
 	return (
 		<div className={style.page}>

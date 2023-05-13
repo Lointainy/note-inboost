@@ -31,7 +31,7 @@ export default function DropdownOptions({ options, fieldStyle }) {
 		return () => {
 			document.removeEventListener('mousedown', handleOutsideClick)
 		}
-	}, [])
+	}, [setDropdown])
 
 	return (
 		<div className={`${style.option}`} ref={dropdownRef}>
