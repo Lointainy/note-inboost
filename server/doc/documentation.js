@@ -15,7 +15,7 @@ const swaggerDoc = {
 	},
 	servers: [
 		{
-			url: 'https://note-app-server.vercel.app/api'
+			url: 'https://note-app-server-lointainy.vercel.app/api'
 		},
 		{
 			url: 'http://localhost:3500/api'
