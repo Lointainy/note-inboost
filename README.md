@@ -12,7 +12,7 @@
 
 ## Overview
 
-![screenshot](./design/preview.jpg)
+![screenshot](./design/preview.png)
 
 ## My process
 
