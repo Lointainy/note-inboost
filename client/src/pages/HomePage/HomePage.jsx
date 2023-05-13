@@ -4,9 +4,10 @@ import style from './HomePage.module.scss'
 /* Icons */
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 
-import { faTelegram, faGithub, faBehance } from '@fortawesome/free-brands-svg-icons'
+import { faBehance, faGithub, faTelegram } from '@fortawesome/free-brands-svg-icons'
 
 export default function HomePage() {
+	document.title = 'Home'
 	const linksList = [
 		{
 			title: 'Telegram',
