@@ -37,3 +37,14 @@
 	}
 }
 
+/* Media */
+@include media(md, mx) {
+	.links {
+		&__list {
+			display: grid;
+			grid-auto-flow: row;
+			row-gap: 1rem;
+		}
+	}
+}
+
