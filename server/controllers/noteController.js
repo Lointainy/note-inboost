@@ -16,7 +16,7 @@ const getNotes = async (req, res) => {
 			res.status(200).json(notes)
 		} else if (!userData) {
 			userData = await Note.create({ notes: defaultNote, user_id })
-			res.status(200).json('User create your first Note')
+			res.status(200).json(notes)
 		}
 	} catch (error) {
 		res.status(500).json({ msg: error.message })
