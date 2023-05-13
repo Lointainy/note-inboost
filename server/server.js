@@ -16,7 +16,7 @@ const { swaggerDoc, optionDoc } = require('./doc/documentation')
 
 /* Initial app */
 const app = express()
-const PORT = process.env.PORT || 3500
+const PORT = process.env.PORT || 4000
 
 // Home Page
 app.get('/', (req, res) => {
