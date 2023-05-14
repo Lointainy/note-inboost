@@ -22,19 +22,20 @@ import './styles/main.scss'
 /* ICONS */
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
-	faSearch,
 	faBars,
-	faPlus,
-	faSun,
-	faMoon,
-	faCircleXmark,
 	faCheck,
-	faRightFromBracket,
-	faTrash,
-	faMinus,
-	faChevronUp,
 	faChevronDown,
-	faPenToSquare
+	faChevronUp,
+	faCircleExclamation,
+	faCircleXmark,
+	faMinus,
+	faMoon,
+	faPenToSquare,
+	faPlus,
+	faRightFromBracket,
+	faSearch,
+	faSun,
+	faTrash
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -50,7 +51,8 @@ library.add(
 	faMinus,
 	faChevronUp,
 	faChevronDown,
-	faPenToSquare
+	faPenToSquare,
+	faCircleExclamation
 )
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
