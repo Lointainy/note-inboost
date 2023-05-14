@@ -73,10 +73,10 @@ export default function SearchBar() {
 			)}
 			{dropdown && (
 				<div className={style.dropdown}>
-					<ul className={style.list}>
+					<ul className={style.dropdown__list}>
 						{searchOptions.map((option, index) => {
 							return (
-								<li className={style.item} key={index} onClick={option.onClick}>
+								<li className={style.dropdown__item} key={index} onClick={option.onClick}>
 									<span>{option.label}</span>
 									<p>{option.date}</p>
 								</li>

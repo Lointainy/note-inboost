@@ -44,10 +44,15 @@
 	color: color(subTitle);
 	border-bottom-left-radius: $border-radius;
 	border-bottom-right-radius: $border-radius;
-	.list {
+
+	&__list {
+		display: grid;
+		grid-auto-flow: row;
+		row-gap: 1rem;
 		padding: 1rem;
 	}
-	.item {
+
+	&__item {
 		list-style: none;
 		color: color(subTitle);
 		display: grid;
