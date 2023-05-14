@@ -12,6 +12,9 @@ import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 /* Components */
 import Input from '../../Standard/Input/Input'
 
+/* Utils */
+import { patternFilterTitle, patternNoteTitle } from '../../../utils/patterns'
+
 export default function EditNote({ closeModal, note }) {
 	const [form, setForm] = useState(note)
 	const [filterInput, setFilterInput] = useState('')
@@ -56,28 +59,29 @@ export default function EditNote({ closeModal, note }) {
 	return (
 		<form className={style.form} onSubmit={handleSubmitForm}>
 			<Input
-				className={'simple'}
 				required={true}
 				label={'title'}
 				name={'title'}
 				value={form.title}
-				pattern={'^[A-Za-zА-Яа-яІіЇїЄєҐґ -]{3,24}$'}
+				pattern={patternNoteTitle}
 				placeholder={'Enter the title'}
 				errorMessage={'Wrong format'}
 				onChange={handleChange}
 				autoFocus={true}
+				tooltip={'without number and spec symbols'}
 			/>
 
 			<div className={style.filters}>
 				<div className={style.add}>
 					<Input
-						className={'simple'}
-						id={'edit-newFilter'}
+						label={'New Filter'}
 						name={'newFilter'}
 						value={filterInput}
-						pattern={'^[A-Za-zА-Яа-яІіЇїЄєҐґ]{3,24}$'}
+						pattern={patternFilterTitle}
 						placeholder={'Enter the Filter'}
 						onChange={handleChange}
+						errorMessage={'Wrong format'}
+						tooltip={'without number, space and spec symbols'}
 					/>
 					{filterInputError && <span className={style.add__error}>Filter cannot be empty</span>}
 					<button type="button" className={style.add__btn} onClick={handleAddFilter}>

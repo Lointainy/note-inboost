@@ -1,5 +1,8 @@
 import { useState } from 'react'
 
+/* Store */
+import { useCreateNoteMutation } from '../../../store/reducers/noteApi'
+
 /* Styles */
 import style from './AddNewNote.module.scss'
 
@@ -8,7 +11,9 @@ import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 
 /* Components */
 import Input from '../../Standard/Input/Input'
-import { useCreateNoteMutation } from '../../../store/reducers/noteApi'
+
+/* Utils */
+import { patternFilterTitle, patternNoteTitle } from '../../../utils/patterns'
 
 /* Default */
 
@@ -66,26 +71,28 @@ export default function AddNewNote({ closeModal }) {
 	return (
 		<form className={style.form} onSubmit={handleSubmitForm}>
 			<Input
-				className={'simple'}
 				required={true}
 				label={'title'}
 				name={'title'}
 				value={form.title}
-				pattern={'^[A-Za-zА-Яа-яІіЇїЄєҐґ -]{3,24}$'}
+				pattern={patternNoteTitle}
 				placeholder={'Enter the title'}
 				errorMessage={'Wrong format'}
 				onChange={handleChange}
 				autoFocus={true}
+				tooltip={'without number and spec symbols'}
 			/>
 			<div className={style.filters}>
 				<div className={style.add}>
 					<Input
-						className={'simple'}
+						label={'New Filter'}
 						name={'newFilter'}
 						value={newFilter}
-						pattern={'^[A-Za-zА-Яа-яІіЇїЄєҐґ]{3,24}$'}
+						pattern={patternFilterTitle}
 						placeholder={'Enter the Filter'}
 						onChange={handleChange}
+						errorMessage={'Wrong format'}
+						tooltip={'without number, space and spec symbols'}
 					/>
 					<button type="button" className={style.add__btn} onClick={handleAddFilter}>
 						<Icon icon={'plus'} />

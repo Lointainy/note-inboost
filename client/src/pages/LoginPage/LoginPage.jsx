@@ -4,9 +4,9 @@ import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
 /* Store */
+import { useDispatch } from 'react-redux'
 import { useLoginMutation } from '../../store/reducers/authApi'
 import { setToken } from '../../store/reducers/authSlice'
-import { useDispatch } from 'react-redux'
 
 /* Styles */
 import style from './LoginPage.module.scss'
@@ -16,6 +16,7 @@ import { CheckBox, Input } from '../../components'
 
 /* Utils */
 import { defaultFormData } from '../../utils/form'
+import { patternEmail, patternPassword } from '../../utils/patterns'
 
 export default function LoginPage() {
 	const dispatch = useDispatch()
@@ -29,10 +30,9 @@ export default function LoginPage() {
 	const [login, { isError: loginError }] = useLoginMutation()
 
 	const handleChange = (e) => {
-		setForm((prev) => ({
-			...prev,
-			[e.target.name]: e.target.value
-		}))
+		const { name, value } = e.target
+		setForm({ ...form, [name]: value })
+		console.log(form.password)
 	}
 
 	// Remember user for next session
@@ -67,10 +67,11 @@ export default function LoginPage() {
 						placeholder={'Enter the email'}
 						errorMessage={'Wrong format'}
 						required={true}
-						pattern={'^([A-Z|a-z|0-9](.|_){0,1})+[A-Z|a-z|0-9]@([A-Z|a-z|0-9])+((.){0,1}[A-Z|a-z|0-9]){2}.[a-z]{2,3}$'}
+						pattern={patternEmail}
 						label={'Email'}
 						value={form.email}
 						onChange={handleChange}
+						tooltip={'example name@gmail.com'}
 					/>
 
 					<Input
@@ -78,10 +79,11 @@ export default function LoginPage() {
 						placeholder={'Enter the password'}
 						errorMessage={'Password is not have correct format'}
 						required={true}
-						pattern={'^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[^da-zA-Z]).{8,}$'}
+						pattern={patternPassword}
 						label={'Password'}
 						value={form.password}
 						onChange={handleChange}
+						tooltip={'6 - 16, example length Asd/12'}
 					/>
 
 					{loginError && <span className={style.error}>User is not found or Password in not correct</span>}
