@@ -3,8 +3,10 @@ import { useState } from 'react'
 /* Styles */
 import style from './Input.module.scss'
 
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
+
 const Input = (props) => {
-	const { label, errorMessage, className, onChange, autoFocus, isNotFocused, ...inputProps } = props
+	const { label, errorMessage, onChange, autoFocus, isNotFocused, tooltip, ...inputProps } = props
 
 	const [focused, setFocused] = useState(false)
 
@@ -19,7 +21,7 @@ const Input = (props) => {
 	}
 
 	return (
-		<div className={`${style.field} ${className && style[className]}`}>
+		<div className={`${style.field}`}>
 			<input
 				autoFocus={autoFocus}
 				type="text"
@@ -29,7 +31,18 @@ const Input = (props) => {
 				focused={focus}
 				className={style.input}
 			/>
-			{label && <h4 className={style.label}>{label}</h4>}
+
+			{label && (
+				<h4 className={style.label}>
+					{label}
+					{tooltip && (
+						<div className={style.tooltip}>
+							<Icon icon="circle-exclamation" className={style.tooltip__icon} />
+							<div className={style.tooltip__span}>{tooltip}</div>
+						</div>
+					)}
+				</h4>
+			)}
 			{errorMessage && <span className={style.error}>{errorMessage}</span>}
 		</div>
 	)
