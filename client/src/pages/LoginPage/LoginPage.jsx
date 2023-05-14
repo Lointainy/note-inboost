@@ -82,7 +82,7 @@ export default function LoginPage() {
 						label={'Password'}
 						value={form.password}
 						onChange={handleChange}
-						tooltip={'6 - 16, example length Asd/12'}
+						tooltip={'8 - 16, example length Asd/12sd'}
 					/>
 
 					{loginError && <span className={style.error}>User is not found or Password in not correct</span>}
