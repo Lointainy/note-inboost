@@ -32,7 +32,6 @@ export default function LoginPage() {
 	const handleChange = (e) => {
 		const { name, value } = e.target
 		setForm({ ...form, [name]: value })
-		console.log(form.password)
 	}
 
 	// Remember user for next session
