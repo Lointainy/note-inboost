@@ -56,20 +56,29 @@ export default function NotePage() {
 			task: '- [ ] - task',
 			heading: '# Heading'
 		}
+		const updatedNote = (typeAdd) => {
+			if (typeAdd === 'task') {
+				return { ...note, body: note.body + `\n` + newBody.task }
+			} else if (typeAdd === 'heading') {
+				return { ...note, body: note.body + `\n` + newBody.heading }
+			}
+		}
 		switch (name) {
 			case 'AddTask':
-				setNote({ ...note, body: note.body + `\n` + newBody.task })
+				setNote(updatedNote('task'))
 				setFocusTextArea(true)
 				setTimeout(() => {
 					setFocusTextArea(false)
 				}, 0)
+				updateNote({ id: noteId, note: updatedNote('task') })
 				break
 			case 'AddHeading':
-				setNote({ ...note, body: note.body + `\n` + newBody.heading })
+				setNote(updatedNote('heading'))
 				setFocusTextArea(true)
 				setTimeout(() => {
 					setFocusTextArea(false)
 				}, 0)
+				updateNote({ id: noteId, note: updatedNote('heading') })
 				break
 			case 'Close':
 				setEditing(false)
@@ -81,7 +90,7 @@ export default function NotePage() {
 
 	useEffect(() => {
 		// Set note data from API after requst
-		if (noteFromApi.data && noteFromApi.isSuccess) {
+		if (noteFromApi.data && noteFromApi.isSuccess && !editing) {
 			const note = noteFromApi.data
 			setNote(note)
 			//Set active note to store
@@ -91,7 +100,7 @@ export default function NotePage() {
 		if (noteFromApi.isError) {
 			navigate('/')
 		}
-	}, [noteFromApi, dispatch, navigate])
+	}, [noteFromApi, dispatch, navigate, editing])
 
 	useEffect(() => {
 		// If click outside stop editing
