@@ -48,3 +48,10 @@
 	@include btn-primary-l;
 }
 
+/* Media */
+@include media(sm, mx) {
+	.field {
+		width: auto;
+	}
+}
+
